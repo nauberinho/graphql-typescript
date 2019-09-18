@@ -744,7 +744,7 @@ export type LaunchListQuery = (
   { __typename?: 'Query' }
   & { launches: Maybe<Array<Maybe<(
     { __typename?: 'Launch' }
-    & Pick<Launch, 'flight_number' | 'mission_name' | 'launch_year'>
+    & Pick<Launch, 'flight_number' | 'mission_name'>
   )>>> }
 );
 
@@ -757,17 +757,7 @@ export type LaunchProfileQuery = (
   { __typename?: 'Query' }
   & { launch: Maybe<(
     { __typename?: 'Launch' }
-    & Pick<Launch, 'flight_number' | 'mission_name' | 'launch_year' | 'launch_success' | 'details'>
-    & { launch_site: Maybe<(
-      { __typename?: 'LaunchSite' }
-      & Pick<LaunchSite, 'site_name'>
-    )>, rocket: Maybe<(
-      { __typename?: 'LaunchRocket' }
-      & Pick<LaunchRocket, 'rocket_name' | 'rocket_type'>
-    )>, links: Maybe<(
-      { __typename?: 'LaunchLinks' }
-      & Pick<LaunchLinks, 'flickr_images'>
-    )> }
+    & Pick<Launch, 'flight_number' | 'mission_name' | 'details'>
   )> }
 );
 
@@ -776,7 +766,6 @@ export const LaunchListDocument = gql`
   launches {
     flight_number
     mission_name
-    launch_year
   }
 }
     `;
@@ -812,19 +801,7 @@ export const LaunchProfileDocument = gql`
   launch(id: $id) {
     flight_number
     mission_name
-    launch_year
-    launch_success
     details
-    launch_site {
-      site_name
-    }
-    rocket {
-      rocket_name
-      rocket_type
-    }
-    links {
-      flickr_images
-    }
   }
 }
     `;
