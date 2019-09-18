@@ -2,7 +2,7 @@ import * as React from "react";
 import { useLaunchListQuery } from "../../generated/graphql";
 import { LaunchList, OwnProps } from "./LaunchList";
 
-const LaunchListContainer = ({ handleIdChange }: OwnProps) => {
+const LaunchListContainer: React.FC<OwnProps> = ({ handleIdChange }) => {
   const { data, error, loading } = useLaunchListQuery();
 
   if (loading) {
